@@ -1,0 +1,96 @@
+{
+  "name": "@ldesign/breadcrumb-vue",
+  "version": "0.1.0",
+  "description": "LDesign 面包屑组件 - Vue 3 适配器",
+  "keywords": [
+    "breadcrumb",
+    "navigation",
+    "route",
+    "vue",
+    "vue3",
+    "composable",
+    "ldesign",
+    "typescript"
+  ],
+  "author": "LDesign Team",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./esm/index.d.ts",
+      "import": "./esm/index.js",
+      "require": "./cjs/index.cjs",
+      "default": "./esm/index.js"
+    },
+    "./components": {
+      "types": "./esm/components/index.d.ts",
+      "import": "./esm/components/index.js",
+      "require": "./cjs/components/index.cjs",
+      "default": "./esm/components/index.js"
+    },
+    "./components/*": {
+      "types": "./esm/components/*.d.ts",
+      "import": "./esm/components/*.js",
+      "require": "./cjs/components/*.cjs",
+      "default": "./esm/components/*.js"
+    },
+    "./composables": {
+      "types": "./esm/composables/index.d.ts",
+      "import": "./esm/composables/index.js",
+      "require": "./cjs/composables/index.cjs",
+      "default": "./esm/composables/index.js"
+    },
+    "./composables/*": {
+      "types": "./esm/composables/*.d.ts",
+      "import": "./esm/composables/*.js",
+      "require": "./cjs/composables/*.cjs",
+      "default": "./esm/composables/*.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./cjs/index.cjs",
+  "module": "./esm/index.js",
+  "types": "./esm/index.d.ts",
+  "unpkg": "./dist/index.js",
+  "jsdelivr": "./dist/index.js",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "esm",
+    "cjs"
+  ],
+  "scripts": {
+    "build": "ldesign-builder build",
+    "dev": "ldesign-builder build --watch",
+    "clean": "rimraf dist es esm cjs lib",
+    "lint": "eslint . --fix",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@ldesign/breadcrumb-core": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0",
+    "vue-router": "^4.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.0.0",
+    "@ldesign/builder": "workspace:*",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "eslint": "^9.18.0",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.7.3",
+    "vue": "^3.3.0",
+    "vue-router": "^4.0.0",
+    "vue-tsc": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vue-router": {
+      "optional": true
+    }
+  },
+  "typings": "./esm/index.d.ts",
+  "browser": "./dist/index.js"
+}

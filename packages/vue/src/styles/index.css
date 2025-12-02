@@ -1,0 +1,222 @@
+/**
+ * LDesign 面包屑组件样式
+ * @module styles
+ */
+
+/* CSS 变量定义 */
+:root {
+  --l-breadcrumb-font-size: 14px;
+  --l-breadcrumb-font-size-small: 12px;
+  --l-breadcrumb-font-size-large: 16px;
+  --l-breadcrumb-color: #666;
+  --l-breadcrumb-color-hover: #1890ff;
+  --l-breadcrumb-color-active: #333;
+  --l-breadcrumb-color-disabled: #bbb;
+  --l-breadcrumb-separator-color: #ccc;
+  --l-breadcrumb-separator-margin: 0 8px;
+  --l-breadcrumb-icon-margin: 0 4px 0 0;
+  --l-breadcrumb-dropdown-bg: #fff;
+  --l-breadcrumb-dropdown-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --l-breadcrumb-dropdown-radius: 4px;
+  --l-breadcrumb-dropdown-item-padding: 8px 16px;
+  --l-breadcrumb-dropdown-item-hover-bg: #f5f5f5;
+  --l-breadcrumb-transition: all 0.2s ease;
+}
+
+/* 面包屑容器 */
+.l-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--l-breadcrumb-font-size);
+  line-height: 1.5;
+  color: var(--l-breadcrumb-color);
+}
+
+.l-breadcrumb--small {
+  font-size: var(--l-breadcrumb-font-size-small);
+}
+
+.l-breadcrumb--large {
+  font-size: var(--l-breadcrumb-font-size-large);
+}
+
+/* 列表 */
+.l-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* 项容器 */
+.l-breadcrumb__item-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 分隔符容器 */
+.l-breadcrumb__separator-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 折叠按钮 */
+.l-breadcrumb__ellipsis {
+  padding: 0 4px;
+  border: none;
+  background: none;
+  color: var(--l-breadcrumb-color);
+  font-size: inherit;
+  cursor: pointer;
+  transition: var(--l-breadcrumb-transition);
+}
+
+.l-breadcrumb__ellipsis:hover {
+  color: var(--l-breadcrumb-color-hover);
+}
+
+/* 面包屑项 */
+.l-breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.l-breadcrumb-item__link,
+.l-breadcrumb-item__button,
+.l-breadcrumb-item__text {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--l-breadcrumb-transition);
+}
+
+.l-breadcrumb-item__link,
+.l-breadcrumb-item__button {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.l-breadcrumb-item--clickable .l-breadcrumb-item__link:hover,
+.l-breadcrumb-item--clickable .l-breadcrumb-item__button:hover {
+  color: var(--l-breadcrumb-color-hover);
+}
+
+.l-breadcrumb-item--last .l-breadcrumb-item__text {
+  color: var(--l-breadcrumb-color-active);
+  font-weight: 500;
+}
+
+.l-breadcrumb-item--disabled {
+  color: var(--l-breadcrumb-color-disabled);
+  cursor: not-allowed;
+}
+
+.l-breadcrumb-item__icon {
+  margin: var(--l-breadcrumb-icon-margin);
+}
+
+/* 下拉菜单触发器 */
+.l-breadcrumb-item__dropdown-trigger {
+  padding: 0 4px;
+  margin-left: 2px;
+  border: none;
+  background: none;
+  color: inherit;
+  font-size: 10px;
+  cursor: pointer;
+  transition: var(--l-breadcrumb-transition);
+}
+
+.l-breadcrumb-item__dropdown-trigger:hover {
+  color: var(--l-breadcrumb-color-hover);
+}
+
+.l-breadcrumb-item__dropdown-arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.l-breadcrumb-item__dropdown-trigger[aria-expanded="true"] .l-breadcrumb-item__dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* 分隔符 */
+.l-breadcrumb-separator {
+  margin: var(--l-breadcrumb-separator-margin);
+  color: var(--l-breadcrumb-separator-color);
+  user-select: none;
+}
+
+/* 下拉菜单 */
+.l-breadcrumb-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  min-width: 120px;
+  margin-top: 4px;
+  padding: 4px 0;
+  background: var(--l-breadcrumb-dropdown-bg);
+  border-radius: var(--l-breadcrumb-dropdown-radius);
+  box-shadow: var(--l-breadcrumb-dropdown-shadow);
+}
+
+.l-breadcrumb-dropdown__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.l-breadcrumb-dropdown__item {
+  display: block;
+}
+
+.l-breadcrumb-dropdown__link,
+.l-breadcrumb-dropdown__button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--l-breadcrumb-dropdown-item-padding);
+  border: none;
+  background: none;
+  font: inherit;
+  color: var(--l-breadcrumb-color);
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  transition: var(--l-breadcrumb-transition);
+}
+
+.l-breadcrumb-dropdown__link:hover,
+.l-breadcrumb-dropdown__button:hover {
+  background: var(--l-breadcrumb-dropdown-item-hover-bg);
+  color: var(--l-breadcrumb-color-hover);
+}
+
+.l-breadcrumb-dropdown__item--disabled .l-breadcrumb-dropdown__link,
+.l-breadcrumb-dropdown__item--disabled .l-breadcrumb-dropdown__button {
+  color: var(--l-breadcrumb-color-disabled);
+  cursor: not-allowed;
+}
+
+.l-breadcrumb-dropdown__item--disabled .l-breadcrumb-dropdown__link:hover,
+.l-breadcrumb-dropdown__item--disabled .l-breadcrumb-dropdown__button:hover {
+  background: none;
+  color: var(--l-breadcrumb-color-disabled);
+}
+
+.l-breadcrumb-dropdown__icon {
+  margin-right: 8px;
+}
+
+.l-breadcrumb-dropdown__label {
+  flex: 1;
+  white-space: nowrap;
+}

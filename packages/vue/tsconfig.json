@@ -1,0 +1,17 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "rootDir": "./src",
+    "types": ["node"],
+    "declaration": true,
+    "declarationDir": "./esm",
+    "declarationMap": true,
+    "outDir": "./esm",
+    "sourceMap": true
+  },
+  "include": ["src/**/*", "src/**/*.vue"],
+  "exclude": ["node_modules", "dist", "es", "esm", "cjs", "lib", "__tests__", "examples"]
+}
+

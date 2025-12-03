@@ -47,6 +47,7 @@
       "require": "./cjs/composables/*.cjs",
       "default": "./esm/composables/*.js"
     },
+    "./styles": "./src/styles/index.css",
     "./package.json": "./package.json"
   },
   "main": "./cjs/index.cjs",

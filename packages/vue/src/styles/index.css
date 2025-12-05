@@ -1,27 +1,42 @@
 /**
  * LDesign 面包屑组件样式
  * @module styles
- * 使用全局 Color 和 Size CSS 变量
+ * 使用全局 @ldesign/color 和 @ldesign/size CSS 变量
+ * 现代化设计，支持亮暗主题
  */
 
 /* CSS 变量定义 - 完全依赖全局 CSS 变量 */
 :root {
-  --l-breadcrumb-font-size: var(--size-font-sm);
-  --l-breadcrumb-font-size-small: var(--size-font-xs);
-  --l-breadcrumb-font-size-large: var(--size-font-md);
-  --l-breadcrumb-color: var(--color-text-secondary);
-  --l-breadcrumb-color-hover: var(--color-primary);
-  --l-breadcrumb-color-active: var(--color-text-primary);
-  --l-breadcrumb-color-disabled: var(--color-text-disabled);
-  --l-breadcrumb-separator-color: var(--color-border);
-  --l-breadcrumb-separator-margin: 0 var(--size-space-xs);
-  --l-breadcrumb-icon-margin: 0 var(--size-space-xxs) 0 0;
-  --l-breadcrumb-dropdown-bg: var(--color-bg-container);
-  --l-breadcrumb-dropdown-shadow: var(--color-shadow-small);
-  --l-breadcrumb-dropdown-radius: var(--size-radius-sm);
-  --l-breadcrumb-dropdown-item-padding: var(--size-space-xs) var(--size-space-md);
-  --l-breadcrumb-dropdown-item-hover-bg: var(--color-bg-hover);
-  --l-breadcrumb-transition: all var(--size-duration-fast) ease;
+  /* 字体大小 - 使用 size 包变量 */
+  --l-breadcrumb-font-size: var(--size-font-sm, 14px);
+  --l-breadcrumb-font-size-small: var(--size-font-xs, 12px);
+  --l-breadcrumb-font-size-large: var(--size-font-base, 15px);
+
+  /* 颜色 - 使用 color 包变量 */
+  --l-breadcrumb-color: var(--color-gray-500, #6b7280);
+  --l-breadcrumb-color-hover: var(--color-primary-500, #3b82f6);
+  --l-breadcrumb-color-active: var(--color-gray-900, #111827);
+  --l-breadcrumb-color-disabled: var(--color-gray-300, #d1d5db);
+  --l-breadcrumb-separator-color: var(--color-gray-300, #d1d5db);
+
+  /* 间距 - 使用 size 包变量 */
+  --l-breadcrumb-separator-margin: 0 var(--size-space-s, 10px);
+  --l-breadcrumb-icon-margin: 0 var(--size-space-xxs, 4px) 0 0;
+  --l-breadcrumb-item-padding: var(--size-space-xxs, 4px) var(--size-space-xs, 6px);
+  --l-breadcrumb-item-radius: var(--size-radius-sm, 6px);
+
+  /* 下拉菜单样式 */
+  --l-breadcrumb-dropdown-bg: var(--color-bg-container, #ffffff);
+  --l-breadcrumb-dropdown-border: 1px solid var(--color-gray-200, #e5e7eb);
+  --l-breadcrumb-dropdown-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --l-breadcrumb-dropdown-radius: var(--size-radius-lg, 12px);
+  --l-breadcrumb-dropdown-item-padding: var(--size-space-xs, 8px) var(--size-space-m, 14px);
+  --l-breadcrumb-dropdown-item-hover-bg: var(--color-gray-50, #f9fafb);
+
+  /* 过渡动画 */
+  --l-breadcrumb-transition: all var(--size-duration-fast, 150ms) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* 面包屑容器 */
@@ -31,6 +46,7 @@
   font-size: var(--l-breadcrumb-font-size);
   line-height: 1.5;
   color: var(--l-breadcrumb-color);
+  font-weight: 400;
 }
 
 .l-breadcrumb--small {
@@ -49,6 +65,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  gap: 0;
 }
 
 /* 项容器 */
@@ -65,17 +82,24 @@
 
 /* 折叠按钮 */
 .l-breadcrumb__ellipsis {
-  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--l-breadcrumb-item-padding);
   border: none;
-  background: none;
+  background: transparent;
   color: var(--l-breadcrumb-color);
   font-size: inherit;
   cursor: pointer;
+  border-radius: var(--l-breadcrumb-item-radius);
   transition: var(--l-breadcrumb-transition);
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .l-breadcrumb__ellipsis:hover {
   color: var(--l-breadcrumb-color-hover);
+  background: var(--color-primary-50, rgba(59, 130, 246, 0.08));
 }
 
 /* 面包屑项 */
@@ -93,13 +117,15 @@
   text-decoration: none;
   color: inherit;
   transition: var(--l-breadcrumb-transition);
+  padding: var(--l-breadcrumb-item-padding);
+  border-radius: var(--l-breadcrumb-item-radius);
+  font-weight: 400;
 }
 
 .l-breadcrumb-item__link,
 .l-breadcrumb-item__button {
-  padding: 0;
   border: none;
-  background: none;
+  background: transparent;
   font: inherit;
   cursor: pointer;
 }
@@ -107,6 +133,7 @@
 .l-breadcrumb-item--clickable .l-breadcrumb-item__link:hover,
 .l-breadcrumb-item--clickable .l-breadcrumb-item__button:hover {
   color: var(--l-breadcrumb-color-hover);
+  background: var(--color-primary-50, rgba(59, 130, 246, 0.08));
 }
 
 .l-breadcrumb-item--last .l-breadcrumb-item__text {
@@ -121,27 +148,36 @@
 
 .l-breadcrumb-item__icon {
   margin: var(--l-breadcrumb-icon-margin);
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  opacity: 0.7;
 }
 
 /* 下拉菜单触发器 */
 .l-breadcrumb-item__dropdown-trigger {
-  padding: 0 4px;
-  margin-left: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 4px;
+  margin-left: 4px;
   border: none;
-  background: none;
-  color: inherit;
+  background: transparent;
+  color: var(--color-gray-400, #9ca3af);
   font-size: 10px;
   cursor: pointer;
+  border-radius: var(--size-radius-sm, 4px);
   transition: var(--l-breadcrumb-transition);
 }
 
 .l-breadcrumb-item__dropdown-trigger:hover {
   color: var(--l-breadcrumb-color-hover);
+  background: var(--color-primary-50, rgba(59, 130, 246, 0.08));
 }
 
 .l-breadcrumb-item__dropdown-arrow {
-  display: inline-block;
-  transition: transform 0.2s;
+  display: inline-flex;
+  transition: transform var(--size-duration-fast, 150ms) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .l-breadcrumb-item__dropdown-trigger[aria-expanded="true"] .l-breadcrumb-item__dropdown-arrow {
@@ -153,20 +189,35 @@
   margin: var(--l-breadcrumb-separator-margin);
   color: var(--l-breadcrumb-separator-color);
   user-select: none;
+  font-size: var(--size-font-xs, 12px);
+  opacity: 0.6;
 }
 
 /* 下拉菜单 */
 .l-breadcrumb-dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 4px);
   left: 0;
-  z-index: 1000;
-  min-width: 120px;
-  margin-top: 4px;
-  padding: 4px 0;
+  z-index: var(--size-z-dropdown, 1050);
+  min-width: 140px;
+  padding: var(--size-space-xxs, 4px);
   background: var(--l-breadcrumb-dropdown-bg);
+  border: var(--l-breadcrumb-dropdown-border);
   border-radius: var(--l-breadcrumb-dropdown-radius);
   box-shadow: var(--l-breadcrumb-dropdown-shadow);
+  animation: breadcrumb-dropdown-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes breadcrumb-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .l-breadcrumb-dropdown__list {
@@ -186,12 +237,14 @@
   width: 100%;
   padding: var(--l-breadcrumb-dropdown-item-padding);
   border: none;
-  background: none;
+  background: transparent;
   font: inherit;
-  color: var(--l-breadcrumb-color);
+  font-size: var(--size-font-sm, 14px);
+  color: var(--color-gray-700, #374151);
   text-decoration: none;
   text-align: left;
   cursor: pointer;
+  border-radius: var(--size-radius-md, 8px);
   transition: var(--l-breadcrumb-transition);
 }
 
@@ -209,12 +262,14 @@
 
 .l-breadcrumb-dropdown__item--disabled .l-breadcrumb-dropdown__link:hover,
 .l-breadcrumb-dropdown__item--disabled .l-breadcrumb-dropdown__button:hover {
-  background: none;
+  background: transparent;
   color: var(--l-breadcrumb-color-disabled);
 }
 
 .l-breadcrumb-dropdown__icon {
-  margin-right: 8px;
+  margin-right: var(--size-space-xs, 8px);
+  display: inline-flex;
+  color: var(--color-gray-400, #9ca3af);
 }
 
 .l-breadcrumb-dropdown__label {
@@ -224,13 +279,17 @@
 
 /* 暗色模式支持 */
 [data-theme-mode="dark"],
+[data-theme="dark"],
 .dark {
-  --l-breadcrumb-color: var(--color-text-secondary);
-  --l-breadcrumb-color-hover: var(--color-primary);
-  --l-breadcrumb-color-active: var(--color-text-primary);
-  --l-breadcrumb-color-disabled: var(--color-text-disabled);
-  --l-breadcrumb-separator-color: var(--color-border);
-  --l-breadcrumb-dropdown-bg: var(--color-bg-container);
-  --l-breadcrumb-dropdown-shadow: var(--size-shadow-3, 0 4px 12px rgba(0, 0, 0, 0.4));
-  --l-breadcrumb-dropdown-item-hover-bg: var(--color-bg-hover);
+  --l-breadcrumb-color: var(--color-gray-400, #9ca3af);
+  --l-breadcrumb-color-hover: var(--color-primary-400, #60a5fa);
+  --l-breadcrumb-color-active: var(--color-gray-100, #f3f4f6);
+  --l-breadcrumb-color-disabled: var(--color-gray-600, #4b5563);
+  --l-breadcrumb-separator-color: var(--color-gray-600, #4b5563);
+  --l-breadcrumb-dropdown-bg: var(--color-gray-800, #1f2937);
+  --l-breadcrumb-dropdown-border: 1px solid var(--color-gray-700, #374151);
+  --l-breadcrumb-dropdown-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --l-breadcrumb-dropdown-item-hover-bg: var(--color-gray-700, #374151);
 }

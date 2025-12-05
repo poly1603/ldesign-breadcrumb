@@ -1,26 +1,27 @@
 /**
  * LDesign 面包屑组件样式
  * @module styles
+ * 使用全局 Color 和 Size CSS 变量
  */
 
-/* CSS 变量定义 */
+/* CSS 变量定义 - 完全依赖全局 CSS 变量 */
 :root {
-  --l-breadcrumb-font-size: 14px;
-  --l-breadcrumb-font-size-small: 12px;
-  --l-breadcrumb-font-size-large: 16px;
-  --l-breadcrumb-color: #666;
-  --l-breadcrumb-color-hover: #1890ff;
-  --l-breadcrumb-color-active: #333;
-  --l-breadcrumb-color-disabled: #bbb;
-  --l-breadcrumb-separator-color: #ccc;
-  --l-breadcrumb-separator-margin: 0 8px;
-  --l-breadcrumb-icon-margin: 0 4px 0 0;
-  --l-breadcrumb-dropdown-bg: #fff;
-  --l-breadcrumb-dropdown-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  --l-breadcrumb-dropdown-radius: 4px;
-  --l-breadcrumb-dropdown-item-padding: 8px 16px;
-  --l-breadcrumb-dropdown-item-hover-bg: #f5f5f5;
-  --l-breadcrumb-transition: all 0.2s ease;
+  --l-breadcrumb-font-size: var(--size-font-sm);
+  --l-breadcrumb-font-size-small: var(--size-font-xs);
+  --l-breadcrumb-font-size-large: var(--size-font-md);
+  --l-breadcrumb-color: var(--color-text-secondary);
+  --l-breadcrumb-color-hover: var(--color-primary);
+  --l-breadcrumb-color-active: var(--color-text-primary);
+  --l-breadcrumb-color-disabled: var(--color-text-disabled);
+  --l-breadcrumb-separator-color: var(--color-border);
+  --l-breadcrumb-separator-margin: 0 var(--size-space-xs);
+  --l-breadcrumb-icon-margin: 0 var(--size-space-xxs) 0 0;
+  --l-breadcrumb-dropdown-bg: var(--color-bg-container);
+  --l-breadcrumb-dropdown-shadow: var(--color-shadow-small);
+  --l-breadcrumb-dropdown-radius: var(--size-radius-sm);
+  --l-breadcrumb-dropdown-item-padding: var(--size-space-xs) var(--size-space-md);
+  --l-breadcrumb-dropdown-item-hover-bg: var(--color-bg-hover);
+  --l-breadcrumb-transition: all var(--size-duration-fast) ease;
 }
 
 /* 面包屑容器 */
@@ -219,4 +220,17 @@
 .l-breadcrumb-dropdown__label {
   flex: 1;
   white-space: nowrap;
+}
+
+/* 暗色模式支持 */
+[data-theme-mode="dark"],
+.dark {
+  --l-breadcrumb-color: var(--color-text-secondary);
+  --l-breadcrumb-color-hover: var(--color-primary);
+  --l-breadcrumb-color-active: var(--color-text-primary);
+  --l-breadcrumb-color-disabled: var(--color-text-disabled);
+  --l-breadcrumb-separator-color: var(--color-border);
+  --l-breadcrumb-dropdown-bg: var(--color-bg-container);
+  --l-breadcrumb-dropdown-shadow: var(--size-shadow-3, 0 4px 12px rgba(0, 0, 0, 0.4));
+  --l-breadcrumb-dropdown-item-hover-bg: var(--color-bg-hover);
 }

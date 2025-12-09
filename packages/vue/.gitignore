@@ -1,3 +1,19 @@
-node_modules
-cjs
+﻿# Build outputs
+es
 esm
+lib
+dist
+cjs
+# Dependencies
+node_modules
+
+# IDE
+.vscode
+.idea
+
+# Logs
+*.log
+
+# Cache
+.rollup.cache
+*.tsbuildinfo

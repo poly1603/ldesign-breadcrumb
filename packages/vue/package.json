@@ -15,9 +15,7 @@
   "author": "LDesign Team",
   "license": "MIT",
   "type": "module",
-  "sideEffects": [
-    "**/*.css"
-  ],
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./esm/index.d.ts",
@@ -25,8 +23,6 @@
       "require": "./cjs/index.cjs",
       "default": "./esm/index.js"
     },
-    "./styles": "./src/styles/index.css",
-    "./styles/*": "./src/styles/*",
     "./components": {
       "types": "./esm/components/index.d.ts",
       "import": "./esm/components/index.js",
@@ -63,8 +59,7 @@
     "LICENSE",
     "CHANGELOG.md",
     "esm",
-    "cjs",
-    "src/styles"
+    "cjs"
   ],
   "scripts": {
     "build": "ldesign-builder build",
